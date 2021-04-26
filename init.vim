@@ -1,4 +1,8 @@
 syntax enable
+set virtualedit=onemore
+" deoplete
+let g:deoplete#enable_at_startup = 1
+set wildmode=list:longest
 colorscheme molokai
 "行番号を表示
 set number
