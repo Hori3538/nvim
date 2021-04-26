@@ -1,4 +1,5 @@
 syntax enable
+set clipboard+=unnamedplus
 set virtualedit=onemore
 " deoplete
 let g:deoplete#enable_at_startup = 1
