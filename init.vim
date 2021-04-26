@@ -32,6 +32,8 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 "クオーテーションの補完
 inoremap ' ''<LEFT>
 inoremap " ""<LEFT>
+"[]の補完
+inoremap [ []<LEFT>
 if &compatible
    set nocompatible
 endif
