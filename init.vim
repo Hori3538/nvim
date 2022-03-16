@@ -35,12 +35,18 @@ inoremap ' ''<LEFT>
 inoremap " ""<LEFT>
 "[]の補完
 inoremap [ []<LEFT>
+
+set completeopt=menuone,noinsert
+" 補完表示時のEnterで改行をしない
+inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+
 if &compatible
    set nocompatible
 endif
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state('~/.cache/dein')
-    call dein#begin('~/.cache/dein')
+
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+if dein#load_state('~/.vim/dein')
+    call dein#begin('~/.vim/dein')
     call dein#load_toml('~/.config/nvim/dein.toml', {'lazy': 0})
     call dein#load_toml('~/.config/nvim/dein_lazy.toml', {'lazy': 1})
     call dein#end()
