@@ -33,3 +33,6 @@ repo = 'Shougo/deoplete.nvim'
 
 [[plugins]]
 repo = 'ekalinin/Dockerfile.vim'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
