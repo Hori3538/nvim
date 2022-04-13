@@ -25,35 +25,51 @@ set whichwrap=b,s,h,l,<,>,[,],~
 set noswapfile
 "ペーストモードを解除
 set nopaste
-"括弧閉じの自動補完
-inoremap { {}<LEFT>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<LEFT>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-"クオーテーションの補完
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
-"[]の補完
-inoremap [ []<LEFT>
+" "括弧閉じの自動補完
+" inoremap { {}<LEFT>
+" inoremap {<Enter> {}<Left><CR><ESC><S-o>
+" inoremap ( ()<LEFT>
+" inoremap (<Enter> ()<Left><CR><ESC><S-o>
+" "クオーテーションの補完
+" inoremap ' ''<LEFT>
+" inoremap " ""<LEFT>
+" "[]の補完
+" inoremap [ []<LEFT>
 
 set completeopt=menuone,noinsert
 " 補完表示時のEnterで改行をしない
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 
-if &compatible
-   set nocompatible
-endif
 
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state('~/.vim/dein')
-    call dein#begin('~/.vim/dein')
-    call dein#load_toml('~/.config/nvim/dein.toml', {'lazy': 0})
-    call dein#load_toml('~/.config/nvim/dein_lazy.toml', {'lazy': 1})
-    call dein#end()
-    call dein#save_state()
-endif
-if dein#check_install()
-    call dein#install()
-endif
-filetype plugin indent on
-syntax enable
+" vim-plug なかったら落としてくる
+" if empty(glob('$HOME/.local/share/nvim/site/autoload/plug.vim'))
+"   silent !curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
+"
+" " 足りないプラグインがあれば :PlugInstall を実行
+" autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+"   \| PlugInstall --sync | source $MYVIMRC
+" \| endif
+
+call plug#begin('$HOME/.local/share/nvim/plugged')
+Plug 'tomasr/molokai'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/deoplete.nvim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
+
+nnoremap <silent><C-n> :NERDTreeToggle<CR>
