@@ -39,6 +39,25 @@ set completeopt=menuone,noinsert
 " 補完表示時のEnterで改行をしない
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 
+" 削除キーでyankしない
+" nnoremap x "_x
+" nnoremap d "_d
+" nnoremap D "_D
+
+"" coc.nvim
+""" <Tab>で候補をナビゲート
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+""" <Tab>で次、<S+Tab>で前
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " vim-plug なかったら落としてくる
 if empty(glob('$HOME/.local/share/nvim/site/autoload/plug.vim'))
@@ -62,7 +81,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/deoplete.nvim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'jiangmiao/auto-pairs'
