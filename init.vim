@@ -35,9 +35,17 @@ set nopaste
 " "[]の補完
 " inoremap [ []<LEFT>
 
+" menuone: 補完候補が一つしかなくてもポップアップメニューを表示
 set completeopt=menuone,noinsert
 " 補完表示時のEnterで改行をしない
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+" ポップアップメニューの最大高さ
+set pumheight=10
+" true color を使えるようにする設定
+" これがないとポップアップメニューを透過するようにしたときにキモくなる
+set termguicolors
+" ポップアップメニューの透過率
+set pumblend=40
 
 " 削除キーでyankしない
 " nnoremap x "_x
