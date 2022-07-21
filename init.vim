@@ -67,6 +67,11 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" Hで注釈表示
+nnoremap <silent> H :<C-u>call CocAction('doHover') <cr>
+" dfでDefinition
+nmap <silent> df <Plug>(coc-definition)
+
 " vim-plug なかったら落としてくる
 if empty(glob('$HOME/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs
