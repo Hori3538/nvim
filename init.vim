@@ -102,8 +102,19 @@ Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'lambdalisue/fern.vim'
-
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {
+    },
+    ensure_installed = 'all'
+  }
+}
+EOF
 
 " nnoremap <silent><C-n> :NERDTreeToggle<CR>
 " Ctrl+nでファイルツリーを表示/非表示する
