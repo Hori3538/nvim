@@ -7,7 +7,7 @@ colorscheme molokai
 "行番号を表示
 set number
 "tabを可視化
-set list listchars=tab:\▸\-
+set list listchars=tab:>-
 "tab文字を半角スペースにする
 set expandtab
 "行頭以外のtab文字の表示幅(スペースいくつ分か)
@@ -16,8 +16,25 @@ set tabstop=4
 set shiftwidth=4
 " 貼付け時tabを入れない
 set paste
+
+" remaps of normal mode
+nnoremap H ^
+nnoremap L $
+nnoremap j gj
+nnoremap k gk
+
+" remaps of insert mode
+
 " insertモードでjjをEscとして扱う
 inoremap jj <Esc>
+
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-b> <left>
+inoremap <C-f> <right>
+
+inoremap <C-d> <del>
+
 "行をまたいで移動
 set whichwrap=b,s,h,l,<,>,[,],~
 " スワップファイルを作らない
@@ -68,9 +85,12 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Hで注釈表示
-nnoremap <silent> H :<C-u>call CocAction('doHover') <cr>
+nnoremap <silent> <c-h> :<C-u>call CocAction('doHover') <cr>
 " dfでDefinition
 nmap <silent> df <Plug>(coc-definition)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
 
 " vim-plug なかったら落としてくる
 if empty(glob('$HOME/.local/share/nvim/site/autoload/plug.vim'))
