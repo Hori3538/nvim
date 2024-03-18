@@ -88,6 +88,10 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <silent> <c-h> :<C-u>call CocAction('doHover') <cr>
 " dfでDefinition
 nmap <silent> df <Plug>(coc-definition)
+" rnでRename
+nmap <silent> rn <Plug>(coc-rename)
+" rfでReferences
+nmap <silent> rf <Plug>(coc-references)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -121,8 +125,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'lambdalisue/fern.vim'
+" Plug 'lambdalisue/fern.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
 
 lua <<EOF

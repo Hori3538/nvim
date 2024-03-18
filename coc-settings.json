@@ -3,10 +3,13 @@
 
     "languageserver": {
 
-    "clangd": {
-        "command": "clangd",
-        "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
-        "filetypes": ["cpp", "c++", "c", "cc", "objc", "objcpp"]
-    }
-    }
+        "clangd": {
+            "command": "clangd",
+            "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+            "filetypes": ["cpp", "c++", "c", "cc", "objc", "objcpp"]
+        }
+    },
+
+    "pyright.enable": true,
+    "python.pythonPath": "python3",
 }
